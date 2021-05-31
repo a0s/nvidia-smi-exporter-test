@@ -39,14 +39,6 @@ object Build : BuildType({
     }
     
     steps {
-        dockerCommand {
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                commandArgs = "--pull"
-            }
-        }
     }
 
     triggers {
