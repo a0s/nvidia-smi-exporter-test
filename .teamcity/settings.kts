@@ -32,10 +32,10 @@ project {
 
 object Build : BuildType({
     name = "Build"
-
-    println("---teamcity.build.branch=%teamcity.build.branch%")
     
     vcs {
+        println("---teamcity.build.branch=%teamcity.build.branch%")
+        
         root(DslContext.settingsRoot)
     }
 
