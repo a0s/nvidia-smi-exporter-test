@@ -30,6 +30,13 @@ project {
     buildType(Build)
 }
 
+object MvnDeployRules {
+    fun action(branch: String): String {
+        println("-checkbox--teamcity.build.branch=%teamcity.build.branch%")
+        return "true"
+    }
+}
+
 object Build : BuildType({
     name = "Build"
     
@@ -37,7 +44,7 @@ object Build : BuildType({
         println("-params--teamcity.build.branch=%teamcity.build.branch%")
         
         checkbox(
-            "MVN_SKIP_TEST", "true",
+            "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
             label = "IsMvnSkipTest",
             description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
             display = ParameterDisplay.PROMPT,
