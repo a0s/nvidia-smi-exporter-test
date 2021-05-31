@@ -33,6 +33,18 @@ project {
 object Build : BuildType({
     name = "Build"
     
+    params {
+        println("-params--teamcity.build.branch=%teamcity.build.branch%")
+        
+        checkbox(
+            "MVN_SKIP_TEST", "true",
+            label = "IsMvnSkipTest",
+            description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
+            display = ParameterDisplay.PROMPT,
+            checked = "true", unchecked = "false"
+        )
+    }
+    
     vcs {
         println("-vcs--teamcity.build.branch=%teamcity.build.branch%")
         root(DslContext.settingsRoot)
