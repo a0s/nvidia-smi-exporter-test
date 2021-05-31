@@ -26,7 +26,7 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 project {
-
+    println("-project--teamcity.build.branch=%teamcity.build.branch%")
     buildType(Build)
 }
 
@@ -34,9 +34,19 @@ object Build : BuildType({
     name = "Build"
     
     vcs {
-        println("---teamcity.build.branch=%teamcity.build.branch%")
-        
+        println("-vcs--teamcity.build.branch=%teamcity.build.branch%")
         root(DslContext.settingsRoot)
+    }
+    
+    steps {
+        dockerCommand {
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                commandArgs = "--pull"
+            }
+        }
     }
 
     triggers {
