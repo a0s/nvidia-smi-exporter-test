@@ -33,30 +33,29 @@ project {
 object MvnDeployRules {
     fun action(branch: String): String {
         println("-checkbox--teamcity.build.branch=%teamcity.build.branch%")
-        return "true"
+        return "false"
     }
 }
 
 object Build : BuildType({
     name = "Build"
-    
+
     params {
         println("-params--teamcity.build.branch=%teamcity.build.branch%")
-        
+
         checkbox(
-            "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
-            label = "IsMvnSkipTest",
-            description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
-            display = ParameterDisplay.PROMPT,
-            checked = "true", unchecked = "false"
+                "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
+                label = "IsMvnSkipTest",
+                description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
+                display = ParameterDisplay.PROMPT,
+                checked = "true", unchecked = "false"
         )
     }
-    
+
     vcs {
-        println("-vcs--teamcity.build.branch=%teamcity.build.branch%")
         root(DslContext.settingsRoot)
     }
-    
+
     steps {
     }
 
