@@ -43,6 +43,8 @@ object Build : BuildType({
     params {
         println("-params--teamcity.build.branch=%teamcity.build.branch%")
 
+        text("BUILD_BRANCH", "%teamcity.build.branch%", allowEmpty = true)
+
         checkbox(
                 "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
                 label = "IsMvnSkipTest",
