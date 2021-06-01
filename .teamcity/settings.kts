@@ -66,7 +66,7 @@ object SubPBuild : BuildType({
             scriptContent = """
                     #!/usr/bin/env bash
                     set -e
-                    echo "----CUSTOM_PARAM=>>>%CUSTOM_PARAM%<<<"                                        
+                    echo "----CUSTOM_CHECKBOX=>>>%CUSTOM_CHECKBOX%<<<"                                        
                 """.trimIndent()
         }
     }
