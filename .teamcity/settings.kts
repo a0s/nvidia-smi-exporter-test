@@ -29,16 +29,17 @@ version = "2020.2"
 
 
 project {
-    name = "SubP"
-    project(SubP)
+    name = "project"
+    subProject(SubP)
 }
 
 object SubP : Project({
+    name = "sub_project"
     buildType(SubPBuild)
 })
 
 object SubPBuild : BuildType({
-    name = "SubPBuild"
+    name = "sub_build"
 
     params {
         param("CUSTOM_PARAM", "custom_value")
