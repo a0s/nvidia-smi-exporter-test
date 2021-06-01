@@ -32,11 +32,15 @@ project {
     subProject(SubP)
 
     params {
-        param("CUSTOM_PARAM", "custom_value_sub_project")
-    }
+        checkbox("CUSTOM_CHECKBOX", "value_checked",
+                label = "label",
+                description = "description",
+                display = ParameterDisplay.PROMPT,
+                checked = "value_checked",
+                unchecked = "value_unchecked")
 
-    params {
-        param("CUSTOM_PARAM", "%teamcity.build.branch%")
+        param("CUSTOM_CHECKBOX", "custom_value_sub_project")
+        param("CUSTOM_CHECKBOX", "%teamcity.build.branch%")
     }
 }
 
