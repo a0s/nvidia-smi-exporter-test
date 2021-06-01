@@ -59,20 +59,33 @@ object Build : BuildType({
     }
 
     steps {
-        dockerCommand {
-            name = "DockerStep"
+        script {
+            name = "test envs"
 
-            conditions {
-                println("-------%teamcity.build.branch%")
-                equals("teamcity.build.branch", "release")
-            }
-            commandType = build {
-                source = file {
-                    path = "Dockerfile"
-                }
-                commandArgs = "--pull"
-            }
+            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
+
+            scriptContent = """
+                    #!/usr/bin/env bash
+                    set -e
+                    echo "teamcity.build.branch=>>>%teamcity.build.branch%<<<"
+                    echo "CI_DOCKER_BUILD_ARG=>>>%env.CI_DOCKER_BUILD_ARG%<<<"                    
+                """.trimIndent()
         }
+
+//        dockerCommand {
+//            name = "DockerStep"
+//
+//            conditions {
+//                println("-------%teamcity.build.branch%")
+//                equals("teamcity.build.branch", "release")
+//            }
+//            commandType = build {
+//                source = file {
+//                    path = "Dockerfile"
+//                }
+//                commandArgs = "--pull"
+//            }
+//        }
     }
 
     triggers {
