@@ -39,8 +39,8 @@ project {
                 checked = "value_checked",
                 unchecked = "value_unchecked")
 
-        param("CUSTOM_CHECKBOX", "custom_value_sub_project")
-        param("CUSTOM_CHECKBOX", "%teamcity.build.branch%")
+//        param("CUSTOM_CHECKBOX", "custom_value_sub_project")
+//        param("CUSTOM_CHECKBOX", "%teamcity.build.branch%")
     }
 }
 
