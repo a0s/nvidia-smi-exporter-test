@@ -41,17 +41,15 @@ object Build : BuildType({
     name = "Build"
 
     params {
-        println("-params--teamcity.build.branch=%teamcity.build.branch%")
-
-        text("BUILD_BRANCH", "%teamcity.build.branch%", allowEmpty = true)
-
-        checkbox(
-                "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
-                label = "IsMvnSkipTest",
-                description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
-                display = ParameterDisplay.PROMPT,
-                checked = "true", unchecked = "false"
-        )
+//        text("BUILD_BRANCH", "%teamcity.build.branch%", allowEmpty = true)
+//
+//        checkbox(
+//                "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
+//                label = "IsMvnSkipTest",
+//                description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
+//                display = ParameterDisplay.PROMPT,
+//                checked = "true", unchecked = "false"
+//        )
     }
 
     vcs {
@@ -60,7 +58,7 @@ object Build : BuildType({
 
     steps {
         script {
-            name = "test envs"
+            name = "script"
 
             dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
 
