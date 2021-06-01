@@ -27,19 +27,7 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 
 version = "2020.2"
 
-project {
-    name = "nvidia-smi-exporter-test"
-    subProject( SubP )
-}
-
-object SubP : Project({
-    name = "subp"
-
-    buildType(SubPBuild)
-})
-
 object SubPBuild : BuildType({
-
     params {
         param("CUSTOM_PARAM", "custom_value")
     }
@@ -62,3 +50,14 @@ object SubPBuild : BuildType({
         root(DslContext.settingsRoot)
     }
 })
+
+
+object SubP : Project({
+    name = "subp"
+    buildType(SubPBuild)
+})
+
+project {
+    name = "nvidia-smi-exporter-test"
+    subProject(SubP)
+}
