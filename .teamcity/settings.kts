@@ -34,19 +34,20 @@ project {
 
 object SubP : Project({
     name = "sub_project"
+
+    buildType(SubPBuild)
+
     params {
         param("CUSTOM_PARAM", "custom_value_sub_project")
     }
-
-    buildType(SubPBuild)
 })
 
 object SubPBuild : BuildType({
     name = "sub_build"
 
-//    params {
-//        param("CUSTOM_PARAM", "custom_value")
-//    }
+    params {
+        param("CUSTOM_PARAM", "custom_value")
+    }
 
     steps {
         script {
