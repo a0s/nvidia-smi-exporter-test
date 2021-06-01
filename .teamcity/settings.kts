@@ -59,6 +59,19 @@ object Build : BuildType({
     }
 
     steps {
+        dockerCommand {
+            name = "DockerStep"
+
+            conditions {
+                equals("teamcity.build.branch", "master")
+            }
+            commandType = build {
+                source = file {
+                    path = "Dockerfile"
+                }
+                commandArgs = "--pull"
+            }
+        }
     }
 
     triggers {
