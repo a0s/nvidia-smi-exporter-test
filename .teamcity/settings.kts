@@ -41,7 +41,7 @@ project {
 
         param("CUSTOM_CHECKBOX", mavenDeployByBranch(
                 "%teamcity.build.branch%",
-                _default_value = "%CUSTOM_CHECKBOX_PREV%"))
+                _default_value = "ololo"))
     }
 }
 
