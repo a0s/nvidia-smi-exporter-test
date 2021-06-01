@@ -30,20 +30,20 @@ version = "2020.2"
 
 project {
     subProject(SubP)
-}
-
-object SubP : Project({
-    name = "sub_project"
-
-    buildType(SubPBuild)
 
     params {
         param("CUSTOM_PARAM", "custom_value_sub_project")
     }
 
     params {
-        param("CUSTOM_PARAM", "%teamcity.build.branch%-%CUSTOM_PARAM%")
+        param("CUSTOM_PARAM", "%teamcity.build.branch%)
     }
+}
+
+object SubP : Project({
+    name = "sub_project"
+
+    buildType(SubPBuild)
 })
 
 object SubPBuild : BuildType({
