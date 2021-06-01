@@ -30,29 +30,9 @@ project {
 }
 
 object Build : BuildType({
-    name = "Build2"
+    name = "Build"
 
     vcs {
         root(DslContext.settingsRoot)
-    }
-
-    steps {
-        script {
-            name = "script"
-
-            dockerImagePlatform = ScriptBuildStep.ImagePlatform.Linux
-
-            scriptContent = """
-                    #!/usr/bin/env bash
-                    set -e
-                    echo "teamcity.build.branch=>>>%teamcity.build.branch%<<<"
-                    echo "CI_DOCKER_BUILD_ARG=>>>%env.CI_DOCKER_BUILD_ARG%<<<"                    
-                """.trimIndent()
-        }
-    }
-
-    triggers {
-        vcs {
-        }
     }
 })
