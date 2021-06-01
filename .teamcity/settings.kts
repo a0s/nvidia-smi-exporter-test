@@ -26,11 +26,11 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 project {
-    buildType(Build2)
+    buildType(Build)
 }
 
-object Build2 : BuildType({
-    name = "Build"
+object Build : BuildType({
+    name = "Build2"
 
     vcs {
         root(DslContext.settingsRoot)
