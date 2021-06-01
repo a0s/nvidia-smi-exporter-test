@@ -28,11 +28,15 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 
+fun calculateState(branch: String): String {
+    return "value_checked"
+}
+
 project {
     subProject(SubP)
 
     params {
-        checkbox("CUSTOM_CHECKBOX", "value_checked",
+        checkbox("CUSTOM_CHECKBOX", calculateState("%teamcity.build.branch%"),
                 label = "label",
                 description = "description",
                 display = ParameterDisplay.PROMPT,
