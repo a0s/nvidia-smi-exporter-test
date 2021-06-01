@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
 /*
@@ -9,9 +10,23 @@ To apply the patch, change the buildType with id = 'Build'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("Build")) {
-    params {
-        add {
-            text("BUILD_BRANCH", "%teamcity.build.branch%", allowEmpty = true)
+    expectSteps {
+    }
+    steps {
+        insert(0) {
+            dockerCommand {
+                name = "DockerStep"
+
+                conditions {
+                    equals("teamcity.build.branch", "release")
+                }
+                commandType = build {
+                    source = file {
+                        path = "Dockerfile"
+                    }
+                    commandArgs = "--pull"
+                }
+            }
         }
     }
 }
