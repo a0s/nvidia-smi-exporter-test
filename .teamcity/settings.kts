@@ -32,12 +32,12 @@ project {
     subProject(SubP)
 
     params {
-        checkbox("CUSTOM_CHECKBOX_PREV", "package",
-                label = "label",
-                description = "description",
-                display = ParameterDisplay.PROMPT,
-                checked = "deploy",
-                unchecked = "package")
+//        checkbox("CUSTOM_CHECKBOX_PREV", "package",
+//                label = "label",
+//                description = "description",
+//                display = ParameterDisplay.PROMPT,
+//                checked = "deploy",
+//                unchecked = "package")
 
         param("CUSTOM_CHECKBOX", mavenDeployByBranch(
                 "%teamcity.build.branch%",
