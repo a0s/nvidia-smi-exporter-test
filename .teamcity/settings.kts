@@ -26,13 +26,11 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 project {
-    println("-project--teamcity.build.branch=%teamcity.build.branch%")
     buildType(Build)
 }
 
 object MvnDeployRules {
     fun action(branch: String): String {
-        println("-checkbox--teamcity.build.branch=%teamcity.build.branch%")
         return "false"
     }
 }
@@ -41,15 +39,6 @@ object Build : BuildType({
     name = "Build"
 
     params {
-//        text("BUILD_BRANCH", "%teamcity.build.branch%", allowEmpty = true)
-//
-//        checkbox(
-//                "MVN_SKIP_TEST", MvnDeployRules.action("branch"),
-//                label = "IsMvnSkipTest",
-//                description = """MVN_SKIP_TEST: run --Dmaven.test.skip""",
-//                display = ParameterDisplay.PROMPT,
-//                checked = "true", unchecked = "false"
-//        )
     }
 
     vcs {
@@ -69,21 +58,6 @@ object Build : BuildType({
                     echo "CI_DOCKER_BUILD_ARG=>>>%env.CI_DOCKER_BUILD_ARG%<<<"                    
                 """.trimIndent()
         }
-
-//        dockerCommand {
-//            name = "DockerStep"
-//
-//            conditions {
-//                println("-------%teamcity.build.branch%")
-//                equals("teamcity.build.branch", "release")
-//            }
-//            commandType = build {
-//                source = file {
-//                    path = "Dockerfile"
-//                }
-//                commandArgs = "--pull"
-//            }
-//        }
     }
 
     triggers {
