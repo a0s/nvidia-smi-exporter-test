@@ -32,7 +32,7 @@ project {
     subProject(SubP)
 
     params {
-        checkbox("CUSTOM_CHECKBOX_PREV", "deploy",
+        checkbox("CUSTOM_CHECKBOX_PREV", "package",
                 label = "label",
                 description = "description",
                 display = ParameterDisplay.PROMPT,
