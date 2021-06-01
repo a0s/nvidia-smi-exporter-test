@@ -29,7 +29,6 @@ version = "2020.2"
 
 
 project {
-    name = "project"
     subProject(SubP)
 }
 
