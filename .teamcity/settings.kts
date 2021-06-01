@@ -42,7 +42,7 @@ object SubP : Project({
     }
 
     params {
-        param("CUSTOM_PARAM", "custom_value_sub_project2")
+        param("CUSTOM_PARAM", "%teamcity.build.branch%")
     }
 })
 
