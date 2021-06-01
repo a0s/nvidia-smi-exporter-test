@@ -1,5 +1,7 @@
 package filters
 
+import java.io.File
+
 fun mavenDeployByBranch(
         branch: String,
         _default_value: String,
@@ -12,7 +14,7 @@ fun mavenDeployByBranch(
     val list = _deploy_branch_only
             .split("\n")
             .map { it.removePrefix("+:") }
-    println("----------------${branch}")
+    File("debug.out").writeText("----------------branch=${branch}")
     if (branch in list) {
         return _deploy_value
     } else {
