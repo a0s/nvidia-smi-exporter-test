@@ -63,7 +63,7 @@ object Build : BuildType({
             name = "DockerStep"
 
             conditions {
-                equals("teamcity.build.branch", "master")
+                equals("teamcity.build.branch", "release")
             }
             commandType = build {
                 source = file {
