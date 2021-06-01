@@ -53,11 +53,11 @@ object SubPBuild : BuildType({
 
 
 object SubP : Project({
-    name = "subp"
+//    name = "subp"
     buildType(SubPBuild)
 })
 
 project {
-    name = "nvidia-smi-exporter-test"
+//    name = "nvidia-smi-exporter-test"
     subProject(SubP)
 }
