@@ -36,7 +36,7 @@ project {
     }
 
     params {
-        param("CUSTOM_PARAM", "%teamcity.build.branch%)
+        param("CUSTOM_PARAM", "%teamcity.build.branch%")
     }
 }
 
