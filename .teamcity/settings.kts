@@ -30,11 +30,12 @@ version = "2020.2"
 
 fun calculateState(branch: String): String {
     println("-----$branch")
-    if (branch == "master") {
-        return "value_checked"
-    } else {
-        return "value_unchecked"
-    }
+    return "value_checked"
+//    if (branch == "master") {
+//        return "value_checked"
+//    } else {
+//        return "value_unchecked"
+//    }
 }
 
 project {
