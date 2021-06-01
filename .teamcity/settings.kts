@@ -27,6 +27,16 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 
 version = "2020.2"
 
+
+project {
+    name = "SubP"
+    project(SubP)
+}
+
+object SubP : Project({
+    buildType(SubPBuild)
+})
+
 object SubPBuild : BuildType({
     name = "SubPBuild"
 
@@ -53,13 +63,3 @@ object SubPBuild : BuildType({
     }
 })
 
-
-object SubP : Project({
-//    name = "subp"
-    buildType(SubPBuild)
-})
-
-project {
-    name = "SubP"
-    subProject(SubP)
-}
