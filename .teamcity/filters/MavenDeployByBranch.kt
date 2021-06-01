@@ -14,7 +14,8 @@ fun mavenDeployByBranch(
     val list = _deploy_branch_only
             .split("\n")
             .map { it.removePrefix("+:") }
-    File("/tmp/debug.out").writeText("----------------branch=${branch}")
+    File("/tmp/debug.out").writeText("----------------branch=$branch")
+    Thread.sleep(59_000)
     if (branch in list) {
         return _deploy_value
     } else {
