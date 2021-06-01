@@ -12,6 +12,7 @@ fun mavenDeployByBranch(
     val list = _deploy_branch_only
             .split("\n")
             .map { it.removePrefix("+:") }
+    println("----------------${branch}")
     if (branch in list) {
         return _deploy_value
     } else {
