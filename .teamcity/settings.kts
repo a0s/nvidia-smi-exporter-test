@@ -29,7 +29,7 @@ version = "2020.2"
 
 
 fun calculateState(branch: String): String {
-    if (branch == "d") {
+    if (branch == "master") {
         return "value_checked"
     } else {
         return "value_unchecked"
