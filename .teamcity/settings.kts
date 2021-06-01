@@ -29,15 +29,15 @@ version = "2020.2"
 
 
 project {
-    params {
-        param("CUSTOM_PARAM", "custom_value_root")
-    }
-
     subProject(SubP)
 }
 
 object SubP : Project({
     name = "sub_project"
+    params {
+        param("CUSTOM_PARAM", "custom_value_sub_project")
+    }
+
     buildType(SubPBuild)
 })
 
