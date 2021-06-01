@@ -28,11 +28,20 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2020.2"
 
 project {
-    buildType(Build)
+    name = "root-project"
+    subProject( SubP )
 }
 
-object Build : BuildType({
+object SubP : Project({
+    buildType(SubPBuild)
+})
+
+object SubPBuild : BuildType({
     name = "Build"
+
+    params {
+        param("CUSTOM_PARAM", "custom_value")
+    }
 
     steps {
         script {
@@ -43,7 +52,7 @@ object Build : BuildType({
             scriptContent = """
                     #!/usr/bin/env bash
                     set -e
-                    echo "teamcity.build.branch=>>>%teamcity.build.branch%<<<"                                        
+                    echo "----CUSTOM_PARAM=>>>%CUSTOM_PARAM%<<<"                                        
                 """.trimIndent()
         }
     }
