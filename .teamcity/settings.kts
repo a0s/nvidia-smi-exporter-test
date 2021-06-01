@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
+import filters.mavenDeployByBranch
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -27,31 +28,20 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 
 version = "2020.2"
 
-
-fun calculateState(branch: String): String {
-//    println("-----$branch")
-//    return branch
-//    if (branch == "master") {
-//        return "value_checked"
-//    } else {
-//        return "value_unchecked"
-//    }
-    return "value_checked"
-}
-
 project {
     subProject(SubP)
 
     params {
-        checkbox("CUSTOM_CHECKBOX", calculateState("%teamcity.build.branch%"),
+        checkbox("CUSTOM_CHECKBOX_PREV", "deploy",
                 label = "label",
                 description = "description",
                 display = ParameterDisplay.PROMPT,
-                checked = "value_checked",
-                unchecked = "value_unchecked")
+                checked = "deploy",
+                unchecked = "package")
 
-//        param("CUSTOM_CHECKBOX", "custom_value_sub_project")
-//        param("CUSTOM_CHECKBOX", "%teamcity.build.branch%")
+        param("CUSTOM_CHECKBOX", mavenDeployByBranch(
+                "%teamcity.build.branch%",
+                _default_value = "%CUSTOM_CHECKBOX_PREV%"))
     }
 }
 
