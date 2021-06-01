@@ -29,7 +29,7 @@ version = "2020.2"
 
 
 fun calculateState(branch: String): String {
-    return "value_checked"
+    return "value_unchecked"
 }
 
 project {
